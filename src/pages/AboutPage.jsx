@@ -59,7 +59,7 @@ const About = () => {
           <m.div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 text-center sm:text-left">
             <Users className="max-sm:hidden w-12 h-12 text-cyan-400 flex-shrink-0 self-center" />
             <m.div variants={itemVariants}>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent mb-4">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent mb-4">
                 About Me
               </h1>
               <div className="h-1.5 w-24 mx-auto sm:mx-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full" />
