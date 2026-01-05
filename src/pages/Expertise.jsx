@@ -105,7 +105,7 @@ const ExpertisePage = () => {
                           <span className={`text-sm font-semibold bg-gradient-to-r ${item.color} bg-clip-text text-transparent`}>
                             {item.year}
                           </span>
-                          <h3 className="text-xl sm:text-2xl font-bold text-white mt-1">
+                          <h3 className="text-[1rem] sm:text-2xl font-bold text-white mt-1">
                             {item.title}
                           </h3>
                         </div>
@@ -146,19 +146,22 @@ const ExpertisePage = () => {
                     initial={
                       isMobile
                         ? false
-                        : { scale: 0.8, opacity: 0 }
+                        : { scale: 0.85, opacity: 0 }
                     }
-                    animate={
+                    whileInView={
                       isMobile
                         ? {}
                         : { scale: 1, opacity: 1 }
                     }
+                    viewport={{
+                      once: true,
+                      margin: "-120px", // triggers earlier = feels faster
+                    }}
                     transition={{
-                      delay,
                       duration: 0.25,
                       ease: "easeOut",
                     }}
-                    className={`absolute md:left-1/2 top-1/2 -translate-y-1/2 md:-translate-x-1/2 w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-gradient-to-br ${item.color} shadow-lg ${item.glowColor} flex items-center justify-center border-4 border-gray-900 z-10 will-change-transform`}
+                    className={`absolute md:left-1/2 top-1/2 -translate-y-1/2 md:-translate-x-1/2 w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-gradient-to-br ${item.color} shadow-md ${item.glowColor} flex items-center justify-center border-4 border-gray-900 z-10 will-change-transform`}
                   >
                     <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-white" />
                   </m.div>
