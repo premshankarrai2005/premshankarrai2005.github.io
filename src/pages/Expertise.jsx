@@ -10,6 +10,9 @@ import { Github, GitBranch, Cloud, Lock, Users } from "lucide-react";
 import expertiseData from '../data/expertise';
 
 const ExpertisePage = () => {
+
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
@@ -79,6 +82,7 @@ const ExpertisePage = () => {
             {expertiseData.map((item, index) => {
               const Icon = item.icon;
               const isEven = index % 2 === 0;
+              const delay = isMobile ? 0 : Math.min(index * 0.05, 0.2);
 
               return (
                 <m.div
@@ -139,13 +143,24 @@ const ExpertisePage = () => {
 
                   {/* Timeline Dot */}
                   <m.div
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.2, duration: 0.5, type: 'spring' }}
-                    className={`absolute  md:left-1/2 top-1/2 -translate-y-1/2 transform md:-translate-x-1/2 w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-gradient-to-br ${item.color} shadow-2xl ${item.glowColor} flex items-center justify-center border-4 border-gray-900 z-10`}
+                    initial={
+                      isMobile
+                        ? false
+                        : { scale: 0.8, opacity: 0 }
+                    }
+                    animate={
+                      isMobile
+                        ? {}
+                        : { scale: 1, opacity: 1 }
+                    }
+                    transition={{
+                      delay,
+                      duration: 0.25,
+                      ease: "easeOut",
+                    }}
+                    className={`absolute md:left-1/2 top-1/2 -translate-y-1/2 md:-translate-x-1/2 w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-gradient-to-br ${item.color} shadow-lg ${item.glowColor} flex items-center justify-center border-4 border-gray-900 z-10 will-change-transform`}
                   >
-                    <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-white"></div>
+                    <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-white" />
                   </m.div>
                 </m.div>
               );
