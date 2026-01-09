@@ -2,7 +2,7 @@
   "name": "my-awesome-portfolio",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://prem-shankar-rai.github.io/my-portfolio",
+  "homepage": "https://premportfolio.me",
   "type": "module",
   "scripts": {
     "dev": "vite",
