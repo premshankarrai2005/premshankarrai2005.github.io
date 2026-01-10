@@ -53,7 +53,7 @@ const About = () => {
 
   return (
     <LazyMotion features={domAnimation}>
-      <div id="About" className="min-h-screen text-white flex items-center">
+      <section id="About" className="min-h-screen text-white flex items-center">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
           {/* Heading */}
           <m.div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 text-center sm:text-left">
@@ -177,7 +177,7 @@ const About = () => {
             </m.div>
           </m.div>
         </div>
-      </div>
+      </section>
     </LazyMotion>
   );
 };
