@@ -53,7 +53,7 @@ const About = () => {
 
   return (
     <LazyMotion features={domAnimation}>
-      <section id="About" className="min-h-screen text-white flex items-center">
+      <section id="about" className="min-h-screen text-white flex items-center">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
           {/* Heading */}
           <m.div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 text-center sm:text-left">
@@ -92,7 +92,7 @@ const About = () => {
                 >
                   <img
                     src={PortFolioImg}
-                    alt="Professional profile"
+                    alt="Prem Shankar Rai Full Stack Developer"
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 via-transparent to-transparent" />
@@ -108,7 +108,7 @@ const About = () => {
             {/* Text */}
             <m.div variants={itemVariants} className="order-2 space-y-8">
               <m.p variants={itemVariants} className="text-lg sm:text-xl text-gray-300 leading-relaxed">
-                I'm a Full Stack Web Developer focused on building secure, scalable, and high-performance web applications. I specialize in React, front-end design, API integration, and deployment, turning complex challenges into clean, user-friendly solutions.
+                Hi, I am Prem Shankar Rai, a Full Stack Web Developer focused on building secure, scalable, and high-performance web applications. I specialize in React, front-end design, API integration, and deployment, turning complex challenges into clean, user-friendly solutions.
               </m.p>
 
               <m.p variants={itemVariants} className="text-base sm:text-lg text-gray-400 leading-relaxed">

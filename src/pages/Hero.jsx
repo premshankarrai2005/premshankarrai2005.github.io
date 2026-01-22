@@ -90,7 +90,7 @@ const Hero = () => {
 
   return (
     <section
-      id="Hero"
+      id="hero"
       className="relative w-full min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh] lg:min-h-screen flex items-center justify-center overflow-hidden perspective"
     >
       {/* Background floating 3D elements */}
@@ -133,10 +133,10 @@ const Hero = () => {
                 Welcome to my futuristic portfolio
               </p>
             </div>
-
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 drop-shadow-xl">
+            <h1 className="sr-only">Prem Shankar Rai – Full Stack Web Developer</h1>
+            <p className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 drop-shadow-xl">
               Hi, I’m Prem
-            </h1>
+            </p>
             <h2 className="font-extrabold my-2 sm:my-4 bg-clip-text drop-shadow-xl text-[1rem] sm:text-3xl md:text-4xl text-gray-300 font-mono tracking-widest">
               Full Stack Developer
             </h2>
@@ -145,6 +145,10 @@ const Hero = () => {
               <span className="text-cyan-400">{"<"} </span>
               {displayedText}
               <span className="text-cyan-400"> {" />"}</span>
+            </p>
+            <p className="sr-only">
+              Prem Shankar Rai is a Full Stack Web Developer skilled in React, Node.js,
+              Express.js, MongoDB, MySQL, AWS, Git, and GitHub.
             </p>
 
             <div className="mt-6 sm:mt-10 flex justify-center gap-4 sm:gap-6">

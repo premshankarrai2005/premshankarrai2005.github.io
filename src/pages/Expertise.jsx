@@ -42,7 +42,7 @@ const ExpertisePage = () => {
 
   return (
     <LazyMotion features={domAnimation}>
-      <section id="Expertise" className="min-h-screen text-white overflow-hidden">
+      <section id="expertise" className="min-h-screen text-white overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent"></div>
 
         {/* Only vertical padding adjusted for small screens */}

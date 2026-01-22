@@ -7,11 +7,11 @@ const Navigation = () => {
   const { isDark, toggleTheme } = useTheme();
 
   const navItems = [
-    { id: '01', label: 'Home', name: 'Hero' },
-    { id: '04', label: 'About', name: 'About' },
-    { id: '02', label: 'Expertise', name: 'Expertise' },
-    { id: '03', label: 'Work', name: 'Work' },
-    { id: '05', label: 'Contact', name: 'Contact' },
+    { id: '01', label: 'Home', name: 'hero' },
+    { id: '04', label: 'About', name: 'about' },
+    { id: '02', label: 'Expertise', name: 'expertise' },
+    { id: '03', label: 'Work', name: 'work' },
+    { id: '05', label: 'Contact', name: 'contact' },
   ];
 
   return (

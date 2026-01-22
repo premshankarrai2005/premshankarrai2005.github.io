@@ -7,7 +7,7 @@ import Hero from "../pages/Hero";
 import AboutPage from "../pages/AboutPage";
 import Footer from "../pages/Footer";
 
-const sectionIds = ["Hero", "About", "Expertise", "Work", "Contact"];
+const sectionIds = ["hero", "about", "expertise", "work", "contact"];
 
 const Sections = () => {
 
@@ -38,23 +38,23 @@ const Sections = () => {
 
   return (
     <div className="bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950">
-      <section id="Hero">
+      <section id="hero">
         <Hero />
       </section>
 
-      <section id="About">
+      <section id="about">
         <AboutPage />
       </section>
 
-      <section id="Expertise">
+      <section id="expertise">
         <Expertise />
       </section>
 
-      <section id="Work">
+      <section id="work">
         <Work />
       </section>
 
-      <section id="Contact">
+      <section id="contact">
         <Contact />
       </section>
 

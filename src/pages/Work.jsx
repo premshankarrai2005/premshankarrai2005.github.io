@@ -17,7 +17,7 @@ const Work = () => {
   };
 
   return (
-    <section id="Work" className="min-h-screen overflow-hidden">
+    <section id="work" className="min-h-screen overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
 
         {/* Header */}

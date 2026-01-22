@@ -148,8 +148,8 @@ function Footer() {
                 {/* Content */}
                 <div className="relative z-20 h-full flex items-center justify-center">
                     <div className="text-center px-3 sm:px-6 max-w-4xl">
-                        <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl my-1 sm:my-3 font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 drop-shadow-xl">
-                            PREM RAI
+                        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl my-1 sm:my-3 font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 drop-shadow-xl">
+                            PREM SHANKAR RAI
                         </h1>
 
                         <m.p
