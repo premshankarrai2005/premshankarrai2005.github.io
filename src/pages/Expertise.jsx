@@ -42,8 +42,8 @@ const ExpertisePage = () => {
 
   return (
     <LazyMotion features={domAnimation}>
-      <section id="expertise" className="min-h-screen text-white overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent"></div>
+      <section id="expertise" className="min-h-screen text-slate-900 dark:text-white overflow-hidden transition-colors duration-300">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-900/10 dark:from-blue-900/20 via-transparent to-transparent pointer-events-none"></div>
 
         {/* Only vertical padding adjusted for small screens */}
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
@@ -56,15 +56,15 @@ const ExpertisePage = () => {
             className="text-center mb-12 sm:mb-16 lg:mb-24"
           >
             <m.div className="flex justify-center items-center gap-3 sm:gap-4 mb-3 sm:mb-4 flex-col sm:flex-row">
-              <GitBranch className="max-sm:hidden w-10 h-10 sm:w-12 sm:h-12 text-cyan-400 flex-shrink-0" />
+              <GitBranch className="max-sm:hidden w-10 h-10 sm:w-12 sm:h-12 text-cyan-500 dark:text-cyan-400 flex-shrink-0" />
               <m.div variants={itemVariants}>
-                <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent mb-2 sm:mb-4">
+                <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 dark:from-white dark:via-gray-100 dark:to-gray-300 bg-clip-text text-transparent mb-2 sm:mb-4">
                   Expertise Timeline
                 </h1>
                 <div className="h-1.5 w-20 mx-auto sm:mx-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full" />
               </m.div>
             </m.div>
-            <p className="text-lg sm:text-xl text-gray-400 max-w-xl sm:max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-slate-600 dark:text-gray-400 max-w-xl sm:max-w-2xl mx-auto">
               A journey through years of continuous learning, building, and mastering modern technologies
             </p>
           </m.div>
@@ -77,7 +77,7 @@ const ExpertisePage = () => {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="absolute  md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-500 via-blue-500 to-teal-500 opacity-30"></div>
+            <div className="absolute md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-500 via-blue-500 to-teal-500 opacity-30"></div>
 
             {expertiseData.map((item, index) => {
               const Icon = item.icon;
@@ -95,7 +95,7 @@ const ExpertisePage = () => {
                     <m.div
                       whileHover={{ scale: 1.02, y: -5 }}
                       transition={{ duration: 0.3 }}
-                      className={`bg-gray-800/50 backdrop-blur-xl border border-gray-700/50 rounded-2xl p-6 sm:p-8 md:p-12 shadow-2xl ${item.glowColor} hover:shadow-2xl transition-all duration-300 h-full`}
+                      className={`bg-white/80 dark:bg-gray-800/50 backdrop-blur-xl border border-slate-200/80 dark:border-gray-700/50 rounded-2xl p-6 sm:p-8 md:p-12 shadow-xl dark:shadow-2xl shadow-slate-200/40 ${item.glowColor} hover:shadow-2xl transition-all duration-300 h-full`}
                     >
                       <div className="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4">
                         <div className={`p-2 sm:p-3 rounded-xl bg-gradient-to-br ${item.color} shadow-lg`}>
@@ -105,20 +105,20 @@ const ExpertisePage = () => {
                           <span className={`text-sm font-semibold bg-gradient-to-r ${item.color} bg-clip-text text-transparent`}>
                             {item.year}
                           </span>
-                          <h3 className="text-[1rem] sm:text-2xl font-bold text-white mt-1">
+                          <h3 className="text-[1rem] sm:text-2xl font-bold text-slate-900 dark:text-white mt-1">
                             {item.title}
                           </h3>
                         </div>
                       </div>
 
-                      <p className="text-gray-300 mb-4 sm:mb-6 leading-relaxed">{item.description}</p>
+                      <p className="text-slate-600 dark:text-gray-300 mb-4 sm:mb-6 leading-relaxed">{item.description}</p>
 
                       <div className="flex flex-wrap gap-1 sm:gap-2">
                         {item.skills.map((skill, skillIndex) => (
                           <m.span
                             key={skillIndex}
                             whileHover={{ scale: 1.05 }}
-                            className="px-2 sm:px-3 py-1 text-sm bg-gray-700/50 border border-gray-600/50 rounded-lg text-gray-200 hover:bg-gray-600/50 transition-colors"
+                            className="px-2 sm:px-3 py-1 text-sm bg-slate-100 dark:bg-gray-700/50 border border-slate-200 dark:border-gray-600/50 rounded-lg text-slate-700 dark:text-gray-200 hover:bg-slate-200 dark:hover:bg-gray-600/50 transition-colors"
                           >
                             {skill}
                           </m.span>
@@ -135,8 +135,8 @@ const ExpertisePage = () => {
                       transition={{ type: 'spring', stiffness: 100, damping: 15 }}
                       className={`relative w-24 sm:w-32 h-24 sm:h-32 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center shadow-2xl`}
                     >
-                      <div className="absolute inset-1 rounded-2xl bg-gray-900/50 backdrop-blur-sm flex items-center justify-center">
-                        <Icon className="w-10 sm:w-12 h-10 sm:h-12 text-white" />
+                      <div className="absolute inset-1 rounded-2xl bg-slate-100 dark:bg-gray-900/50 backdrop-blur-sm flex items-center justify-center">
+                        <Icon className="w-10 sm:w-12 h-10 sm:h-12 text-slate-800 dark:text-white" />
                       </div>
                     </m.div>
                   </div>
@@ -155,13 +155,13 @@ const ExpertisePage = () => {
                     }
                     viewport={{
                       once: true,
-                      margin: "-120px", // triggers earlier = feels faster
+                      margin: "-120px",
                     }}
                     transition={{
                       duration: 0.25,
                       ease: "easeOut",
                     }}
-                    className={`absolute md:left-1/2 top-1/2 -translate-y-1/2 md:-translate-x-1/2 w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-gradient-to-br ${item.color} shadow-md ${item.glowColor} flex items-center justify-center border-4 border-gray-900 z-10 will-change-transform`}
+                    className={`absolute md:left-1/2 top-1/2 -translate-y-1/2 md:-translate-x-1/2 w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-gradient-to-br ${item.color} shadow-md ${item.glowColor} flex items-center justify-center border-4 border-slate-100 dark:border-gray-900 z-10 will-change-transform`}
                   >
                     <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-white" />
                   </m.div>
@@ -201,11 +201,11 @@ const ExpertisePage = () => {
             transition={{ delay: 0.2, duration: 0.5 }}
             className="text-center mt-16 sm:mt-24 lg:mt-32"
           >
-            <div className="inline-block p-6 sm:p-8 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 backdrop-blur-xl rounded-2xl border border-cyan-500/20">
-              <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+            <div className="inline-block p-6 sm:p-8 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 backdrop-blur-xl rounded-2xl border border-cyan-500/30">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">
                 Continuous Evolution
               </h2>
-              <p className="text-gray-400 max-w-xl text-sm sm:text-base">
+              <p className="text-slate-600 dark:text-gray-400 max-w-xl text-sm sm:text-base">
                 The journey never stops. Always learning, always building, always pushing the boundaries of what's possible.
               </p>
             </div>

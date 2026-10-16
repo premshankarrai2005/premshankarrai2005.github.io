@@ -37,27 +37,12 @@ const Sections = () => {
 }, []);
 
   return (
-    <div className="bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950">
-      <section id="hero">
-        <Hero />
-      </section>
-
-      <section id="about">
-        <AboutPage />
-      </section>
-
-      <section id="expertise">
-        <Expertise />
-      </section>
-
-      <section id="work">
-        <Work />
-      </section>
-
-      <section id="contact">
-        <Contact />
-      </section>
-
+    <div className="bg-slate-50 text-slate-900 dark:bg-gradient-to-br dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 dark:text-white transition-colors duration-300 min-h-screen">
+      <Hero />
+      <AboutPage />
+      <Expertise />
+      <Work />
+      <Contact />
       <Footer />
     </div>
   );

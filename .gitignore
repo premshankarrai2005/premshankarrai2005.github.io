@@ -21,3 +21,7 @@ dist-ssr
 *.sln
 *.sw?
 .env
+.env.*
+.env.local
+.aiexclude
+GEMINI.md

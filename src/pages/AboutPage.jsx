@@ -3,11 +3,18 @@
 import { PortFolioImg } from '../assets/images';
 import { useState, useRef } from 'react';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
-import { Download, Mail, Phone, Code2, Palette, Rocket, Cloud, Users } from 'lucide-react';
+import { Download, Mail, Phone, Code2, Palette, Rocket, Cloud, Users, Copy, Check, Eye } from 'lucide-react';
+import { useToast } from '../contexts/ToastContext';
+import ResumeModal from '../components/ResumeModal';
 
 const About = () => {
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const imageRef = useRef(null);
+  const { showToast } = useToast();
+  const [copiedEmail, setCopiedEmail] = useState(false);
+  const [copiedPhone, setCopiedPhone] = useState(false);
+  const [showResume, setShowResume] = useState(false);
+
 
   const handleMouseMove = (e) => {
     if (!imageRef.current) return;
@@ -27,6 +34,20 @@ const About = () => {
 
   const handleMouseLeave = () => {
     setTilt({ x: 0, y: 0 });
+  };
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText('premshankarrai2005@gmail.com');
+    setCopiedEmail(true);
+    showToast('Email copied to clipboard! 📋', 'success');
+    setTimeout(() => setCopiedEmail(false), 2000);
+  };
+
+  const copyPhone = () => {
+    navigator.clipboard.writeText('+917250422265');
+    setCopiedPhone(true);
+    showToast('Phone number copied to clipboard! 📋', 'success');
+    setTimeout(() => setCopiedPhone(false), 2000);
   };
 
   const skills = [
@@ -53,13 +74,13 @@ const About = () => {
 
   return (
     <LazyMotion features={domAnimation}>
-      <section id="about" className="min-h-screen text-white flex items-center">
+      <section id="about" className="min-h-screen text-slate-900 dark:text-white flex items-center transition-colors duration-300">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
           {/* Heading */}
           <m.div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 text-center sm:text-left">
-            <Users className="max-sm:hidden w-12 h-12 text-cyan-400 flex-shrink-0 self-center" />
+            <Users className="max-sm:hidden w-12 h-12 text-cyan-500 dark:text-cyan-400 flex-shrink-0 self-center" />
             <m.div variants={itemVariants}>
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent mb-4">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 dark:from-white dark:via-gray-100 dark:to-gray-300 bg-clip-text text-transparent mb-4">
                 About Me
               </h1>
               <div className="h-1.5 w-24 mx-auto sm:mx-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full" />
@@ -79,8 +100,7 @@ const About = () => {
                 ref={imageRef}
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
-                className="relative w-full max-w-[260px] sm:max-w-md
- aspect-square cursor-pointer"
+                className="relative w-full max-w-[260px] sm:max-w-md aspect-square cursor-pointer"
                 style={{ perspective: '1000px' }}
               >
                 <div
@@ -107,11 +127,11 @@ const About = () => {
 
             {/* Text */}
             <m.div variants={itemVariants} className="order-2 space-y-8">
-              <m.p variants={itemVariants} className="text-lg sm:text-xl text-gray-300 leading-relaxed">
+              <m.p variants={itemVariants} className="text-lg sm:text-xl text-slate-700 dark:text-gray-300 leading-relaxed">
                 Hi, I am Prem Shankar Rai, a Full Stack Web Developer focused on building secure, scalable, and high-performance web applications. I specialize in React, front-end design, API integration, and deployment, turning complex challenges into clean, user-friendly solutions.
               </m.p>
 
-              <m.p variants={itemVariants} className="text-base sm:text-lg text-gray-400 leading-relaxed">
+              <m.p variants={itemVariants} className="text-base sm:text-lg text-slate-600 dark:text-gray-400 leading-relaxed">
                 When I'm not coding, you'll find me exploring emerging technologies, contributing to open-source projects, or mentoring aspiring developers. I believe in continuous learning and building products that make a meaningful impact.
               </m.p>
 
@@ -121,15 +141,15 @@ const About = () => {
                   <m.div
                     key={index}
                     variants={itemVariants}
-                    whileHover={{ scale: 1.05, y: -5 }}
+                    whileHover={{ scale: 1.03, y: -4 }}
                     whileTap={{ scale: 0.98 }}
-                    className="group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-4 cursor-pointer transition-all duration-300 hover:border-gray-600 hover:shadow-lg hover:shadow-cyan-500/10"
+                    className="group relative bg-white/80 dark:bg-gray-800/50 backdrop-blur-sm border border-slate-200/80 dark:border-gray-700/50 rounded-xl p-4 cursor-pointer transition-all duration-300 hover:border-cyan-500/40 dark:hover:border-gray-600 shadow-sm dark:shadow-none hover:shadow-md"
                   >
                     <div className="flex items-center gap-3">
-                      <div className={`p-2.5 rounded-lg bg-gradient-to-br ${skill.color} shadow-lg`}>
+                      <div className={`p-2.5 rounded-lg bg-gradient-to-br ${skill.color} shadow-md`}>
                         <skill.icon className="w-5 h-5 text-white" />
                       </div>
-                      <span className="text-sm sm:text-base font-medium text-gray-200 group-hover:text-white transition-colors">
+                      <span className="text-sm sm:text-base font-medium text-slate-800 dark:text-gray-200 group-hover:text-cyan-600 dark:group-hover:text-white transition-colors">
                         {skill.text}
                       </span>
                     </div>
@@ -140,44 +160,92 @@ const About = () => {
                 ))}
               </m.div>
 
-              {/* CTA Buttons */}
-              <m.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 pt-6">
-                <a href="/MyResume.pdf" download>
+              {/* CTA Buttons — Resume */}
+              <m.div variants={itemVariants} className="flex flex-col sm:flex-row gap-3 pt-6">
+                {/* Preview Resume */}
+                <m.button
+                  onClick={() => setShowResume(true)}
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="flex-1 group relative px-5 py-3.5 rounded-xl font-semibold
+                    text-slate-800 dark:text-white
+                    bg-white dark:bg-gray-800
+                    border border-slate-200 dark:border-gray-700
+                    hover:border-cyan-400 dark:hover:border-cyan-500
+                    shadow-sm hover:shadow-md transition-all duration-300
+                    flex items-center justify-center gap-2"
+                >
+                  <Eye className="w-5 h-5 text-cyan-500" />
+                  Preview Resume
+                </m.button>
+
+                {/* Download Resume */}
+                <a href="/MyResume.pdf" download className="flex-1">
                   <m.button
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.98 }}
-                    className="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl font-semibold text-white shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-all duration-300 overflow-hidden flex items-center justify-center gap-2"
+                    className="w-full group relative px-5 py-3.5 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl font-semibold text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all duration-300 overflow-hidden flex items-center justify-center gap-2"
                   >
                     <span className="relative z-10 flex items-center gap-2">
                       <Download className="w-5 h-5" />
-                      Download Resume
+                      Download
                     </span>
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </m.button>
                 </a>
+              </m.div>
 
-                <m.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="group relative px-6 py-4 bg-gray-800/80 hover:bg-gray-750 border border-gray-700 hover:border-gray-600 rounded-xl font-semibold text-white shadow-lg transition-all duration-300 overflow-hidden"
-                >
-                  <span className="relative z-10 flex flex-col gap-1.5">
-                    <span className="flex items-center gap-2">
-                      <Mail className="w-4 h-4" />
-                      <span className="text-sm">premshankarrai2005@gmail.com</span>
+              {/* Interactive Contact Quick Actions */}
+              <m.div variants={itemVariants}>
+                <div className="flex flex-col gap-2 p-3 rounded-xl bg-white/80 dark:bg-gray-800/80 border border-slate-200 dark:border-gray-700 shadow-sm text-xs sm:text-sm">
+                  {/* Email copy button */}
+                  <button
+                    onClick={copyEmail}
+                    className={`flex items-center justify-between p-2 rounded-lg text-left group transition-all duration-200
+                      ${copiedEmail
+                        ? 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400'
+                        : 'hover:bg-slate-100 dark:hover:bg-gray-700/60 text-slate-700 dark:text-gray-200'}`}
+                    title="Click to copy email"
+                  >
+                    <span className="flex items-center gap-2 truncate">
+                      <Mail className={`w-4 h-4 flex-shrink-0 transition-colors ${copiedEmail ? 'text-emerald-500' : 'text-cyan-500'}`} />
+                      <span className="truncate">premshankarrai2005@gmail.com</span>
                     </span>
-                    <span className="flex items-center gap-2">
-                      <Phone className="w-4 h-4" />
-                      <span className="text-sm">+91 72504 22265</span>
+                    {copiedEmail ? (
+                      <Check className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0 ml-1" />
+                    ) : (
+                      <Copy className="w-3.5 h-3.5 opacity-40 group-hover:opacity-100 transition-opacity flex-shrink-0 ml-1" />
+                    )}
+                  </button>
+
+                  {/* Phone copy button */}
+                  <button
+                    onClick={copyPhone}
+                    className={`flex items-center justify-between p-2 rounded-lg text-left group transition-all duration-200
+                      ${copiedPhone
+                        ? 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400'
+                        : 'hover:bg-slate-100 dark:hover:bg-gray-700/60 text-slate-700 dark:text-gray-200'}`}
+                    title="Click to copy phone number"
+                  >
+                    <span className="flex items-center gap-2 truncate">
+                      <Phone className={`w-4 h-4 flex-shrink-0 transition-colors ${copiedPhone ? 'text-emerald-500' : 'text-emerald-500'}`} />
+                      <span>+91 72504 22265</span>
                     </span>
-                  </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-gray-700 to-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </m.button>
+                    {copiedPhone ? (
+                      <Check className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0 ml-1" />
+                    ) : (
+                      <Copy className="w-3.5 h-3.5 opacity-40 group-hover:opacity-100 transition-opacity flex-shrink-0 ml-1" />
+                    )}
+                  </button>
+                </div>
               </m.div>
             </m.div>
           </m.div>
         </div>
       </section>
+
+      {/* Resume Preview Modal */}
+      {showResume && <ResumeModal onClose={() => setShowResume(false)} />}
     </LazyMotion>
   );
 };

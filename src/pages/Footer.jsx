@@ -3,7 +3,7 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
-import { Github, Linkedin, Twitter, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 
 function Footer() {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -34,7 +34,6 @@ function Footer() {
     const socialLinks = [
         { icon: Github, href: 'https://github.com/premshankarrai2005', label: 'GitHub' },
         { icon: Linkedin, href: 'https://www.linkedin.com/in/prem-shankar-rai-11910728a/', label: 'LinkedIn' },
-        { icon: Twitter, href: '#', label: 'Twitter' },
         { icon: Mail, href: 'mailto:premshankarrai2005@gmail.com', label: 'Email' },
     ];
 
@@ -159,7 +158,7 @@ function Footer() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1, delay: 0.2 }}
                         >
-                            Frontend Engineer | Building Scalable & User-Centric Web Experiences
+                            Full Stack Developer | Building Scalable & User-Centric Web Experiences
                         </m.p>
 
                         <m.p className="text-gray-400 mb-2 sm:mb-4 uppercase text-sm tracking-widest">
@@ -171,6 +170,8 @@ function Footer() {
                                 <m.a
                                     key={social.label}
                                     href={social.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="group relative p-3 rounded-full border border-cyan-400/30 backdrop-blur-sm hover:border-cyan-300/60 transition-all duration-300"
                                     whileHover={{ scale: 1.1, rotate: 5 }}
                                     whileTap={{ scale: 0.95 }}

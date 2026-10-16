@@ -22,7 +22,6 @@ const Hero = () => {
   const [isDeleting, setIsDeleting] = useState(false);
 
   const [rotate, setRotate] = useState({ x: 0, y: 0 });
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const [boxes] = useState(() => {
     const positions = [
@@ -69,36 +68,17 @@ const Hero = () => {
   };
   const handleMouseLeave = () => setRotate({ x: 0, y: 0 });
 
-  // Background parallax
-  useEffect(() => {
-    let animationFrame;
-    const handleMouseMoveBG = (e) => {
-      cancelAnimationFrame(animationFrame);
-      animationFrame = requestAnimationFrame(() => {
-        setMousePosition({
-          x: (e.clientX / window.innerWidth - 0.5) * 40,
-          y: (e.clientY / window.innerHeight - 0.5) * 40,
-        });
-      });
-    };
-    window.addEventListener("mousemove", handleMouseMoveBG);
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMoveBG);
-      cancelAnimationFrame(animationFrame);
-    };
-  }, []);
-
   return (
     <section
       id="hero"
-      className="relative w-full min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh] lg:min-h-screen flex items-center justify-center overflow-hidden perspective"
+      className="relative w-full min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh] lg:min-h-screen flex items-center justify-center overflow-hidden perspective pt-20"
     >
       {/* Background floating 3D elements */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {boxes.map((box, i) => (
           <div
             key={i}
-            className="absolute w-24 sm:w-28 md:w-32 h-24 sm:h-28 md:h-32 bg-gradient-to-tr from-cyan-500/30 via-purple-500/20 to-transparent rounded-full blur-2xl sm:blur-3xl animate-float-slow"
+            className="absolute w-24 sm:w-28 md:w-32 h-24 sm:h-28 md:h-32 bg-gradient-to-tr from-cyan-500/25 via-purple-500/20 to-transparent rounded-full blur-2xl sm:blur-3xl animate-float-slow"
             style={{
               top: `${box.top}%`,
               left: `${box.left}%`,
@@ -128,23 +108,42 @@ const Hero = () => {
               transition: { type: "spring", stiffness: 60, damping: 15 },
             }}
           >
-            <div className="mb-4 sm:mb-6 inline-block p-3 sm:p-4 rounded-xl bg-gradient-to-tr from-cyan-500/10 via-purple-500/5 to-transparent border border-cyan-500/20 backdrop-blur-sm shadow-md sm:shadow-lg">
-              <p className="text-cyan-400 font-mono text-xs sm:text-sm animate-pulse">
-                Welcome to my futuristic portfolio
+            <div className="mb-4 sm:mb-6 inline-block p-3 sm:p-4 rounded-xl bg-gradient-to-tr from-cyan-500/10 via-purple-500/5 to-transparent border border-cyan-500/30 backdrop-blur-sm shadow-md sm:shadow-lg">
+              <p className="text-cyan-600 dark:text-cyan-400 font-mono text-xs sm:text-sm animate-pulse font-medium">
+                Welcome to my portfolio
               </p>
             </div>
             <h1 className="sr-only">Prem Shankar Rai – Full Stack Web Developer</h1>
-            <p className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 drop-shadow-xl">
+            <p className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 drop-shadow-sm pb-1">
               Hi, I’m Prem
             </p>
-            <h2 className="font-extrabold my-2 sm:my-4 bg-clip-text drop-shadow-xl text-[1rem] sm:text-3xl md:text-4xl text-gray-300 font-mono tracking-widest">
+            <h2 className="font-extrabold my-2 sm:my-4 drop-shadow-sm text-[1.1rem] sm:text-3xl md:text-4xl text-slate-700 dark:text-gray-300 font-mono tracking-widest">
               Full Stack Developer
             </h2>
 
-            <p className="mt-3 sm:mt-4 text-base sm:text-lg md:text-xl text-gray-300 font-mono tracking-wide">
-              <span className="text-cyan-400">{"<"} </span>
+            {/* Available for Work badge */}
+            {/* <m.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 mb-3 sm:mb-5 rounded-full
+                bg-emerald-50 dark:bg-emerald-500/10
+                border border-emerald-200 dark:border-emerald-500/30
+                shadow-sm"
+            >
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+              </span>
+              <span className="text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-400 tracking-wide">
+                Available for Work
+              </span>
+            </m.div> */}
+
+            <p className="mt-3 sm:mt-4 text-base sm:text-lg md:text-xl text-slate-600 dark:text-gray-300 font-mono tracking-wide">
+              <span className="text-cyan-500 dark:text-cyan-400 font-bold">{"<"} </span>
               {displayedText}
-              <span className="text-cyan-400"> {" />"}</span>
+              <span className="text-cyan-500 dark:text-cyan-400 font-bold"> {" />"}</span>
             </p>
             <p className="sr-only">
               Prem Shankar Rai is a Full Stack Web Developer skilled in React, Node.js,
@@ -153,14 +152,14 @@ const Hero = () => {
 
             <div className="mt-6 sm:mt-10 flex justify-center gap-4 sm:gap-6">
               <a
-                href="#Work"
-                className="px-4 sm:px-6 py-2 sm:py-3 rounded-full border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-gray-900 transition-all duration-300 font-semibold shadow-md sm:shadow-lg"
+                href="#work"
+                className="px-5 sm:px-7 py-2.5 sm:py-3 rounded-full border border-cyan-500 text-cyan-600 hover:bg-cyan-500 hover:text-white dark:text-cyan-400 dark:border-cyan-400 dark:hover:bg-cyan-400 dark:hover:text-gray-900 transition-all duration-300 font-semibold shadow-md sm:shadow-lg"
               >
                 View Work
               </a>
               <a
-                href="#Contact"
-                className="px-4 sm:px-6 py-2 sm:py-3 rounded-full border border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-gray-900 transition-all duration-300 font-semibold shadow-md sm:shadow-lg"
+                href="#contact"
+                className="px-5 sm:px-7 py-2.5 sm:py-3 rounded-full border border-purple-500 text-purple-600 hover:bg-purple-500 hover:text-white dark:text-purple-400 dark:hover:bg-purple-500 dark:hover:text-gray-900 transition-all duration-300 font-semibold shadow-md sm:shadow-lg"
               >
                 Hire Me
               </a>
@@ -170,9 +169,9 @@ const Hero = () => {
       </LazyMotion>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2">
-        <div className="w-5 h-8 border-2 border-gray-500 rounded-full flex items-start justify-center p-1.5 sm:p-2 animate-bounce">
-          <div className="w-1 h-2 bg-gradient-to-b from-cyan-400 to-gray-500 rounded-full animate-pulse" />
+      <div className="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 pointer-events-none">
+        <div className="w-5 h-8 border-2 border-slate-400 dark:border-gray-500 rounded-full flex items-start justify-center p-1.5 sm:p-2 animate-bounce">
+          <div className="w-1 h-2 bg-gradient-to-b from-cyan-500 to-slate-400 dark:from-cyan-400 dark:to-gray-500 rounded-full animate-pulse" />
         </div>
       </div>
 
